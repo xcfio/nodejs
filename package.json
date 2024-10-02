@@ -6,16 +6,13 @@
     "author": "xcfio",
     "license": "MIT",
     "scripts": {
+        "init": "node --eval \"try { require('child_process').execSync('pnpm --version', { stdio: 'ignore' }); console.log('pnpm found, running pnpm to install dependencies'); require('child_process').execSync('pnpm add --save-dev @types/node esbuild tsx', { stdio: 'inherit' }); } catch { console.log('pnpm not found, running npm to install dependencies'); require('child_process').execSync('npm install --save-dev @types/node esbuild tsx', { stdio: 'inherit' }); }\"",
         "lint": "prettier --config=.prettierrc --write src",
         "lint:test": "prettier --config=.prettierrc --check src",
         "test": "tsc --noEmit",
         "dev": "tsx watch src/index.ts",
         "build": "esbuild src/index.ts --bundle --outfile=index.js --platform=node --packages=external",
         "start": "node index.js"
-    },
-    "devDependencies": {
-        "@types/node": "*",
-        "esbuild": "*",
-        "tsx": "*"
     }
 }
+
